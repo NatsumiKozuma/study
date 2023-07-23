@@ -23,23 +23,20 @@ class User {
    // アクセス修飾子:「protected」
    // メソッド名:「printAccountInfo」
 
-   protected String userName() {
-	   System.out.println("名前: " + userName);
-	   }
-   protected int id() {
-	   System.out.println("ID: " + id);
-	   }
-   protected String password() {
-	   System.out.println("パスワード: " + password);
-	   }
-   
-   public class Main {
-	    public static void main(String[] args) {
-	        // Userクラスのインスタンスを生成
-	        User user = new User("Road", "123", "road123");
+   protected void printAccountInfo() {
+       System.out.println("ユーザー名は、" + userName);
+       System.out.println("IDは、" + id);
+       System.out.println("パスワードは、" + password);
+   }
+  
+   	public class Main {
 
-	        // アカウント情報をコンソール出力するメソッドを呼び出し
-	        user.printAccountInfo();
-	    
-	    }
+    public static void main(String[] args) {
+       
+        User user = new User("road", 123, "road123");
 
+       
+        user.printAccountInfo();
+    	}
+   	}
+}
