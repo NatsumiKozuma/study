@@ -45,7 +45,7 @@ public class DBPrepared {
             		JDBC_CONNECTION, USER, PASS);
             statement = connection.createStatement();
 
-            String SQL = "SELECT * FROM TB_SHOHIN WHERE SHOHIN_ID = 001 OR SHOHIN_ID = 020 ";
+            String SQL = "SELECT * FROM TB_SHOHIN WHERE SHOHIN_ID = ? OR SHOHIN_ID = ? ";
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
             /*
