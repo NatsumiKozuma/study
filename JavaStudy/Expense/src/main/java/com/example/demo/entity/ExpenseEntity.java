@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 /**
- * ユーザー情報 Entity
+ * ユーザー情報 Entity(データベースへ登録するためのデータを格納しておくためのクラス)
  */
 @Entity
 @Table(name = "expense" , schema = "public")
@@ -54,5 +54,25 @@ public class ExpenseEntity {
 	 */
 	@Column(name = "description")
 	private String	 description;
+
+	public void setExpenseCategory(Object getexpense_category) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
+	public void setAmount(Integer amount2) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
+	public void setApplicationDate(java.sql.Date date) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
+	public void setDescription(String description2) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
 
 }

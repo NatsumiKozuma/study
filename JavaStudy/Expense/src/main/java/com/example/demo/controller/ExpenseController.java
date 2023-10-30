@@ -11,11 +11,13 @@ import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entity.ExpenseEntity;
 import com.example.demo.service.ExpenseService;
+
+import dto.ExpenseRequest;
 
 @Controller
 @RequestMapping("/expense")
@@ -43,18 +45,19 @@ public class ExpenseController {
      */
     @GetMapping("/expense/add")
     public String displayAdd(Model model) {
-      model.addAttribute("expenseRequest", new ExpenseEntity());
+      model.addAttribute("expenseRequest", new ExpenseRequest());
     return "expense/add";
     }
     /**
-     * ユーザー新規登録
+     * データベースにへの登録
      * @param userRequest リクエストデータ
      * @param model Model
      * @return ユーザー情報一覧画面
      */
-    @GetMapping("/expense/create")
-    public String create(@Validated @ModelAttribute ExpenseEntity expenseEntityt, BindingResult result, Model model) {
-      if (result.hasErrors()) {
+    @RequestMapping(value ="/expense/create", method = RequestMethod.POST)
+    public String create(@Validated @ModelAttribute ExpenseRequest expenseRequest, BindingResult result, Model model) {
+
+    	if (result.hasErrors()) {
         // 入力チェックエラーの場合
         List<String> errorList = new ArrayList<String>();
         for (ObjectError error : result.getAllErrors()) {
@@ -64,19 +67,8 @@ public class ExpenseController {
         return "expense/add";
       }
       // ユーザー情報の登録
-      expenseService.create(expenseService);
-      return "/expense/list";
-    }
-
-    /**
-     * ユーザー情報詳細画面を表示
-     * @param id 表示するユーザーID
-     * @param model Model
-     * @return ユーザー情報詳細画面
-     */
-    @GetMapping("/expense/{id}")
-    public String displayView(@PathVariable Long id, Model model) {
-      return "expense/view";
+      expenseService.add(expenseRequest);
+      return "redirect/expense/list";
     }
 
 	public static Object getExpenseentity() {

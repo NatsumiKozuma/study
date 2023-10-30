@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.ExpenseEntity;
 /**
- * ユーザー情報 Repository
+ * ユーザー情報 Repository(データベースにデータを新規登録するためのクラス)
  */
 @Repository
 public interface ExpenseRepository extends JpaRepository<ExpenseEntity, Long> {
