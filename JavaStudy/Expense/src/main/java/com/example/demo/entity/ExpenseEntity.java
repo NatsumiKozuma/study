@@ -10,10 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import lombok.Data;
 /**
  * ユーザー情報 Entity(データベースへ登録するためのデータを格納しておくためのクラス)
  */
 @Entity
+@Data
 @Table(name = "expense" , schema = "public")
 public class ExpenseEntity {
 
@@ -23,7 +26,7 @@ public class ExpenseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "expense_id")
-			private int expense_id;
+			private Long expense_id;
 
 	/**
 	 * ユーザーID
@@ -60,19 +63,11 @@ public class ExpenseEntity {
 		
 	}
 
-	public void setAmount(Integer amount2) {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
 
 	public void setApplicationDate(java.sql.Date date) {
 		// TODO 自動生成されたメソッド・スタブ
 		
 	}
 
-	public void setDescription(String description2) {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
 
 }

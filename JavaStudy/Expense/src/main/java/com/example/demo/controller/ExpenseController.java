@@ -20,7 +20,6 @@ import com.example.demo.service.ExpenseService;
 import dto.ExpenseRequest;
 
 @Controller
-@RequestMapping("/expense")
 public class ExpenseController {
 
     private static final Object ExpenseEntity = null;
@@ -67,7 +66,7 @@ public class ExpenseController {
         return "expense/add";
       }
       // ユーザー情報の登録
-      expenseService.add(expenseRequest);
+      expenseService.create(expenseRequest);
       return "redirect/expense/list";
     }
 

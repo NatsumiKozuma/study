@@ -55,10 +55,6 @@ public class ExpenseService {
 	}
 
 
-	public void add(ExpenseRequest expenseRequest) {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
 
 
 	public void create(ExpenseRequest expenseRequest) {
