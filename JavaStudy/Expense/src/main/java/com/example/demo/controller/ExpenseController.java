@@ -26,21 +26,21 @@ public class ExpenseController {
 	@Autowired
     private ExpenseService expenseService;
     /**
-     * ユーザー情報一覧画面を表示
+     * 経費一覧画面を表示
      * @param model Model
      * @return ユーザー情報一覧画面
      */
     @GetMapping(value = "/expense/list")
     public String displayList(Model model) {
         List<ExpenseEntity> expenselist = expenseService.searchAll();
-        model.addAttribute("expenslist", expenselist);
+        model.addAttribute("expenselist", expenselist);
         return "expense/list";
     }
 
     /**
-     * ユーザー新規登録画面を表示
+     * 経費新規登録画面を表示
      * @param model Model
-     * @return ユーザー情報一覧画面
+     * @return 経費情報一覧画面
      */
     @GetMapping("/expense/add")
     public String displayAdd(Model model) {
@@ -51,7 +51,7 @@ public class ExpenseController {
      * データベースにへの登録
      * @param userRequest リクエストデータ
      * @param model Model
-     * @return ユーザー情報一覧画面
+     * @return 経費一覧画面
      */
     @RequestMapping(value ="/expense/create", method = RequestMethod.POST)
     public String create(@Validated @ModelAttribute ExpenseRequest expenseRequest, BindingResult result, Model model) {
@@ -65,7 +65,7 @@ public class ExpenseController {
         model.addAttribute("validationError", errorList);
         return "expense/add";
       }
-      // ユーザー情報の登録
+      // 経費情報の登録
       expenseService.create(expenseRequest);
       return "redirect/expense/list";
     }

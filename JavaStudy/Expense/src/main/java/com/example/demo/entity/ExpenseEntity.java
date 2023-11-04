@@ -13,7 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 /**
- * ユーザー情報 Entity(データベースへ登録するためのデータを格納しておくためのクラス)
+ * 経費情報 Entity(データベースへ登録するためのデータを格納しておくためのクラス)
  */
 @Entity
 @Data
