@@ -59,9 +59,9 @@ textarea:focus {
 
 
 
-.submit-button {
+.btn-primary {
     background-color: #ff7f50;
-    color: #fff;
+    color: #fff;;
     border: none;
     padding: 12px 20px;
     font-size: 18px;

@@ -14,6 +14,7 @@
 		<table class="expense-table">
 			<thead>
 				<tr>
+					<th>経費ID</th>
 					<th>ユーザーID</th>
 					<th>申請日</th>
 					<th>経費項目</th>
@@ -23,9 +24,10 @@
 			</thead>
 			<tbody>
 				<tr th:each="expense : ${expenselist}" th:object="${expense}" class="align-middle">
-					<td th:text="*{user_id}"></td>
-					<td th:text="*{#dates.format(expense.application_date, 'yyyy-MM-dd')}"></td>
-					<td th:text="*{expense_category}"></td>
+					<td th:text="*{id}"></td>
+					<td th:text="*{userId}"></td>
+					<td th:text="${#dates.format(expense.applicationDate, 'yyyy/MM/dd')}"></td>
+					<td th:text="*{expenseCategory}"></td>
 					<td th:text="*{amount}"></td>
 					<td th:text="*{description}"></td>
 

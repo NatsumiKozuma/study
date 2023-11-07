@@ -26,25 +26,25 @@ public class ExpenseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "expense_id")
-			private Long expense_id;
+			private Long id;
 
 	/**
 	 * ユーザーID
 	 */
 	@Column(name = "user_id")
-			private int user_id;
+			private int userId;
 	/**
 	 *申請日
 	 */
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "application_date")
-	private Date application_date;
+	private Date applicationDate;
 
 	/**
 	 *経費項目
 	 */
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "expense_category")
-	private String expense_category;
+	private String expenseCategory;
 
 	/**
 	 * 金額

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-	<div class="container">
+	 <class="container">
 		<div th:if="${validationError}" th:each="error : ${validationError}">
 			<label class="text-danger" th:text="${error}"></label>
 		</div>
@@ -51,15 +51,14 @@
 				<label for="description">備考:</label>
 				<textarea id="description" name="description" rows="4"></textarea>
 			</div>
-
-			<form action="./complete.html">
-				<input type="submit" value="申請" class="submit-button">
-			</form>
+			
+			<button class="btn btn-primary" type=”submit”>申請</button>
+			
 			<div class="back-button">
-				<a href="/mypage">マイページに戻る</a>
+				<a th:href="@{'/mypage'}">マイページに戻る</a>
 			</div>
 
-	</div>
+	</class>
 </body>
 
 </html>

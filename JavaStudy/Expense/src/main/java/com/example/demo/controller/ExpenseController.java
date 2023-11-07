@@ -48,13 +48,13 @@ public class ExpenseController {
     return "expense/add";
     }
     /**
-     * データベースにへの登録
+     * データベースへの登録
      * @param userRequest リクエストデータ
      * @param model Model
      * @return 経費一覧画面
      */
-    @RequestMapping(value ="/expense/create", method = RequestMethod.POST)
-    public String create(@Validated @ModelAttribute ExpenseRequest expenseRequest, BindingResult result, Model model) {
+    @RequestMapping(value ="/submitExpense", method = RequestMethod.POST)
+    public String submitExpense(@Validated @ModelAttribute ExpenseRequest expenseRequest, BindingResult result, Model model) {
 
     	if (result.hasErrors()) {
         // 入力チェックエラーの場合
@@ -65,10 +65,16 @@ public class ExpenseController {
         model.addAttribute("validationError", errorList);
         return "expense/add";
       }
-      // 経費情報の登録
+      // ユーザー情報の登録
       expenseService.create(expenseRequest);
-      return "redirect/expense/list";
+      return "redirect/expense/complete";
     }
+    
+    @GetMapping("/complete") // 申請完了画面のエンドポイント
+    public String  getcomplete(Model model) {
+        return "expense/complete"; // 申請完了画面のHTMLファイル名を指定
+    }
+
 
 	public static Object getExpenseentity() {
 		return ExpenseEntity;
