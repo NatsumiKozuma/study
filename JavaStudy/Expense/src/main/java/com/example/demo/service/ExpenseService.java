@@ -24,7 +24,7 @@ public class ExpenseService {
     private ExpenseRepository expenseRepository;
 
     /**
-     * ユーザー情報 全検索
+     * 経費情報 全検索
      * @return 検索結果
      */
 	public List<ExpenseEntity> searchAll() {
@@ -34,20 +34,20 @@ public class ExpenseService {
     
 
 	/**
-	   * ユーザー情報 新規登録
-	   * @param user ユーザー情報
+	   * 経費情報 新規登録
+	   * @param　expense 経費情報
 	   */
 
-	 public void update(ExpenseRequest expenseRequest) {
-		  ExpenseEntity expense = findById(expenseRequest.getUser_id());
-		  if (expense != null) {
-		    expense.setExpenseCategory(expenseRequest.getexpense_category());
-		    expense.setAmount(expenseRequest.getAmount());
-		    expense.setDescription(expenseRequest.getDescription());
-		    expense.setApplicationDate(new Date(0));
-		    expenseRepository.save(expense);
-		  }
+	public void update(ExpenseRequest expenseRequest) {
+		ExpenseEntity expense = findById(expenseRequest.getUser_id());
+		if (expense != null) {
+			expense.setApplicationDate(new Date(0));
+			expense.setExpenseCategory(expenseRequest.getexpense_category());
+			expense.setAmount(expenseRequest.getAmount());
+			expense.setDescription(expenseRequest.getDescription());
+			expenseRepository.save(expense);
 		}
+	}
 
 	private ExpenseEntity findById(Long user_id) {
 		// TODO 自動生成されたメソッド・スタブ

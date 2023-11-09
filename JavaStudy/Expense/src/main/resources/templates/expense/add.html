@@ -15,8 +15,9 @@
 			<label class="text-danger" th:text="${error}"></label>
 		</div>
 		<h1>経費申請フォーム</h1>
-		<form action="file:///c%3A/LetsEngineer/curriculum/JavaStudy/%E9%96%8B%E7%99%BA/HTML/complete.html"
-			method="post">
+		<form th:action="@{/expense/add}" th:object="${expenseRequest}" th:method="post">
+
+		
 			<div class="form-group">
 				<label for="user_id">ユーザーID:</label>
 				<input type="text" id="user_id" name="user_id" required>
@@ -57,7 +58,7 @@
 			<div class="back-button">
 				<a th:href="@{'/mypage'}">マイページに戻る</a>
 			</div>
-
+		</form>
 	</class>
 </body>
 
