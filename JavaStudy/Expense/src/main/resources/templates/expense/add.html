@@ -15,7 +15,7 @@
 			<label class="text-danger" th:text="${error}"></label>
 		</div>
 		<h1>経費申請フォーム</h1>
-		<form th:action="@{/expense/add}" th:object="${expenseRequest}" th:method="post">
+		<form th:action="@{/expense/complete}" th:object="${expenseRequest}" th:method="post">
 
 		
 			<div class="form-group">
@@ -25,7 +25,7 @@
 
 			<div class="form-group">
 				<label for="expenseDate">日付:</label>
-				<input type="date" id="expenseDate" name="expenseDate" required>
+				<input type="date" id="applicationDate" name="applicationDate" required>
 			</div>
 
 			<div class="form-group">

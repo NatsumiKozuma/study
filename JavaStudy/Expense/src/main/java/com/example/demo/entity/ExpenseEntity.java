@@ -36,7 +36,7 @@ public class ExpenseEntity {
 	/**
 	 *申請日
 	 */
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Column(name = "application_date")
 	private Date applicationDate;
 
@@ -64,7 +64,7 @@ public class ExpenseEntity {
 	}
 
 
-	public void setApplicationDate(java.sql.Date date) {
+	public void setApplicationDate(Date applicationDate2) {
 		// TODO 自動生成されたメソッド・スタブ
 		
 	}
