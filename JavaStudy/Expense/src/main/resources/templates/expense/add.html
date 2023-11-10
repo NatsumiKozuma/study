@@ -10,27 +10,27 @@
 </head>
 
 <body>
-	 <class="container">
+	<class="container">
 		<div th:if="${validationError}" th:each="error : ${validationError}">
 			<label class="text-danger" th:text="${error}"></label>
 		</div>
 		<h1>経費申請フォーム</h1>
-		<form th:action="@{/expense/complete}"th:object="${expenseRequest}"  th:method="post">
+		<form th:action="@{/expense/complete}" th:object="${expenseRequest}" th:method="post">
 
-		
+
 			<div class="form-group">
 				<label for="user_id">ユーザーID:</label>
-				<input type="text" id="user_id" name="user_id" required>
+				<input type="text" th:field="*{user_id}" class="form-control">
 			</div>
 
 			<div class="form-group">
-				<label for="expenseDate">日付:</label>
-				<input type="date" id="applicationDate" name="applicationDate" required>
+				<label for="applicationDate">日付:</label>
+				<input type="date" th:field="*{applicationDate}" class="form-control">
 			</div>
 
 			<div class="form-group">
 				<label for="expenseCategory">経費項目:</label>
-				<select id="expenseCategory" name="expenseCategory" required>
+				<select type="select" th:field="*{expenseCategory}" class="form-control">
 					<option value="食事">食事</option>
 					<option value="交通費">交通費</option>
 					<option value="宿泊費">宿泊費</option>
@@ -39,27 +39,22 @@
 			</div>
 
 			<div class="form-group">
-				<label for="expenseAmount">経費金額:</label>
-				<input type="number" id="amount" name="amount" min="0" required>
-				<!-- <p class="file">
-                領収書<br />
-                <form action="file:///c%3A/LetsEngineer/curriculum/JavaStudy/%E9%96%8B%E7%99%BA/HTML/expenselist.html" method="post" enctype="multipart/form-data" >
-                <input type="file" name="file" onchange="previewFile(this);">
-                </p> -->
+				<label for="amount">経費金額:</label>
+				<input type="number" th:field="*{amount}" class="form-control">
 			</div>
 
 			<div class="form-group">
 				<label for="description">備考:</label>
-				<textarea id="description" name="description" rows="4"></textarea>
+				<textarea type="text" th:field="*{description}" class="form-control" rows="4"></textarea>
 			</div>
-			
+
 			<button class="btn btn-primary" type=”submit”>申請</button>
-			
+
 			<div class="back-button">
 				<a th:href="@{'/mypage'}">マイページに戻る</a>
 			</div>
 		</form>
-	</class>
+		</class>
 </body>
 
 </html>

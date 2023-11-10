@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 
 /**
- * ユーザー情報 リクエストデータ
+ * 経費情報 リクエストデータ
  */
 @Data
 public class ExpenseRequest implements Serializable {
@@ -20,7 +20,7 @@ public class ExpenseRequest implements Serializable {
   * ユーザーID
   */
   @NotNull(message = "ユーザーIDを入力してください")
-  private Long user_id;
+  private int user_id;
   
   /**
    * 日付

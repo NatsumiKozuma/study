@@ -14,40 +14,37 @@ import com.example.demo.repository.ExpenseRepository;
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class ExpenseService {
-	
 
 	/**
-	   * ユーザー情報 Repository
-	   */
-    @Autowired
-    private ExpenseRepository expenseRepository;
+	 * ユーザー情報 Repository
+	 */
+	@Autowired
+	private ExpenseRepository expenseRepository;
 
-    /**
-     * 経費情報 全検索
-     * @return 検索結果
-     */
+	/**
+	 * 経費情報 全検索
+	 * 
+	 * @return 検索結果
+	 */
 	public List<ExpenseEntity> searchAll() {
 		// TODO 自動生成されたメソッド・スタブ
 		return expenseRepository.findAll();
 	}
-    
 
 	/**
-	   * 経費情報 新規登録
-	   * @param　expense 経費情報
-	   * 
-	   * 
-	   */
+	 * 経費情報 新規登録
+	 * 
+	 * @param expense 経費情報
+	 * 
+	 * 
+	 */
+	private Date applicationDate;
 
-	
-
-    private Date applicationDate;
-	
 	public void update(ExpenseRequest expenseRequest) {
 		ExpenseEntity expense = findById(expenseRequest.getUser_id());
 		if (expense != null) {
-			Date sqlDate= Date.valueOf("yyyy-MM-dd");
-            expense.setApplicationDate(applicationDate);
+			Date sqlDate = Date.valueOf("yyyy-MM-dd");
+			expense.setApplicationDate(applicationDate);
 			expense.setExpenseCategory(expenseRequest.getExpenseCategory());
 			expense.setAmount(expenseRequest.getAmount());
 			expense.setDescription(expenseRequest.getDescription());
@@ -55,21 +52,18 @@ public class ExpenseService {
 		}
 	}
 
+	private ExpenseEntity findById(int user_id) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
 
 	private ExpenseEntity findById(Long user_id) {
 		// TODO 自動生成されたメソッド・スタブ
 		return null;
 	}
 
-
-
-
 	public void create(ExpenseRequest expenseRequest) {
 		// TODO 自動生成されたメソッド・スタブ
-		
+
 	}
 }
-    
-
-   
-	
