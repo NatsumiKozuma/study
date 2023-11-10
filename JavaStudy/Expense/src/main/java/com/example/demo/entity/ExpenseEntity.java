@@ -36,7 +36,7 @@ public class ExpenseEntity {
 	/**
 	 *申請日
 	 */
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "application_date")
 	private Date applicationDate;
 

@@ -15,7 +15,7 @@
 			<label class="text-danger" th:text="${error}"></label>
 		</div>
 		<h1>経費申請フォーム</h1>
-		<form th:action="@{/expense/complete}" th:object="${expenseRequest}" th:method="post">
+		<form th:action="@{/expense/complete}"th:object="${expenseRequest}"  th:method="post">
 
 		
 			<div class="form-group">
@@ -32,7 +32,7 @@
 				<label for="expenseCategory">経費項目:</label>
 				<select id="expenseCategory" name="expenseCategory" required>
 					<option value="食事">食事</option>
-					<optionS value="交通費">交通費</option>
+					<option value="交通費">交通費</option>
 					<option value="宿泊費">宿泊費</option>
 					<option value="その他">その他</option>
 				</select>
@@ -40,7 +40,7 @@
 
 			<div class="form-group">
 				<label for="expenseAmount">経費金額:</label>
-				<input type="number" id="expenseAmount" name="expenseAmount" min="0" required>
+				<input type="number" id="amount" name="amount" min="0" required>
 				<!-- <p class="file">
                 領収書<br />
                 <form action="file:///c%3A/LetsEngineer/curriculum/JavaStudy/%E9%96%8B%E7%99%BA/HTML/expenselist.html" method="post" enctype="multipart/form-data" >

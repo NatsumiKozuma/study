@@ -28,6 +28,11 @@ public class ExpenseRequest implements Serializable {
   @NotNull(message = "日付を選択してください")
   private Date applicationDate;
   
+  /**
+   * 経費項目
+   */
+  @NotNull(message = "項目を選択してください")
+  private String expenseCategory ;
   
   /**
    * 経費金額
@@ -41,13 +46,5 @@ public class ExpenseRequest implements Serializable {
   @Size(max = 50, message = "備考は50文字以下で入力してください")
   private String description;
 
-public Object getexpense_category1() {
-	// TODO 自動生成されたメソッド・スタブ
-	return null;
-}
 
-public Object getexpense_category() {
-	// TODO 自動生成されたメソッド・スタブ
-	return null;
-}
 }

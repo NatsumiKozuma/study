@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,18 +35,20 @@ public class ExpenseService {
 	/**
 	   * 経費情報 新規登録
 	   * @param　expense 経費情報
+	   * 
+	   * 
 	   */
 
 	
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
+
     private Date applicationDate;
 	
 	public void update(ExpenseRequest expenseRequest) {
 		ExpenseEntity expense = findById(expenseRequest.getUser_id());
 		if (expense != null) {
-			Date sqlDate= Date.valueOf("yyyy/MM/dd");
+			Date sqlDate= Date.valueOf("yyyy-MM-dd");
             expense.setApplicationDate(applicationDate);
-			expense.setExpenseCategory(expenseRequest.getexpense_category());
+			expense.setExpenseCategory(expenseRequest.getExpenseCategory());
 			expense.setAmount(expenseRequest.getAmount());
 			expense.setDescription(expenseRequest.getDescription());
 			expenseRepository.save(expense);
