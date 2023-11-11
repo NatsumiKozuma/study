@@ -65,8 +65,8 @@ public class ExpenseController {
         return "expense/add";
       }
       // 経費情報の登録
-      expenseService.create(expenseRequest);
-      return "redirect/expense/complete";
+      expenseService.update(expenseRequest);
+      return "expense/complete";
     }
     
     @GetMapping("expense/complete") // 申請完了画面のエンドポイント

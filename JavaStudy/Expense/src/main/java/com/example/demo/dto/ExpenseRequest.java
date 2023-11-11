@@ -2,7 +2,6 @@ package com.example.demo.dto;
 
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
@@ -26,7 +25,7 @@ public class ExpenseRequest implements Serializable {
    * 日付
    */
   @NotNull(message = "日付を選択してください")
-  private Date applicationDate;
+  private int applicationDate;
   
   /**
    * 経費項目

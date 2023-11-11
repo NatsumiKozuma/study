@@ -42,14 +42,13 @@ public class ExpenseService {
 
 	public void update(ExpenseRequest expenseRequest) {
 		ExpenseEntity expense = findById(expenseRequest.getUser_id());
-		if (expense != null) {
 			Date sqlDate = Date.valueOf("yyyy-MM-dd");
 			expense.setApplicationDate(applicationDate);
 			expense.setExpenseCategory(expenseRequest.getExpenseCategory());
 			expense.setAmount(expenseRequest.getAmount());
 			expense.setDescription(expenseRequest.getDescription());
 			expenseRepository.save(expense);
-		}
+		
 	}
 
 	private ExpenseEntity findById(int user_id) {
@@ -57,13 +56,4 @@ public class ExpenseService {
 		return null;
 	}
 
-	private ExpenseEntity findById(Long user_id) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-
-	public void create(ExpenseRequest expenseRequest) {
-		// TODO 自動生成されたメソッド・スタブ
-
-	}
 }
