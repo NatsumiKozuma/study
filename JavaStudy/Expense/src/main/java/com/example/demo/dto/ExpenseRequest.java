@@ -25,7 +25,7 @@ public class ExpenseRequest implements Serializable {
    * 日付
    */
   @NotNull(message = "日付を選択してください")
-  private int applicationDate;
+  private String applicationDate;
   
   /**
    * 経費項目

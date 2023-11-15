@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,22 +40,36 @@ public class ExpenseService {
 	 * 
 	 * 
 	 */
+	
+	
 	private Date applicationDate;
 
 	public void update(ExpenseRequest expenseRequest) {
 		ExpenseEntity expense = findById(expenseRequest.getUser_id());
-			Date sqlDate = Date.valueOf("yyyy-MM-dd");
-			expense.setApplicationDate(applicationDate);
-			expense.setExpenseCategory(expenseRequest.getExpenseCategory());
-			expense.setAmount(expenseRequest.getAmount());
-			expense.setDescription(expenseRequest.getDescription());
-			expenseRepository.save(expense);
-		
+		 java.util.Date applicationDate = convertStringToDate(expenseRequest.getApplicationDate());
+		expense.setApplicationDate(applicationDate);
+		expense.setExpenseCategory(expenseRequest.getExpenseCategory().toString());
+		expense.setAmount(expenseRequest.getAmount());
+		expense.setDescription(expenseRequest.getDescription());
+		expenseRepository.save(expense);
+
+	}
+	
+	private java.util.Date convertStringToDate(String dateString) {
+		String str = "yyyy-MM-dd";
+	    SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd");
+	    try {
+	    	java.util.Date date = sdf.parse(str);
+            System.out.println(date.toString());
+	    } catch (ParseException e) {
+	        e.printStackTrace();
+	        return null;
+	    }
+		return applicationDate;
 	}
 
 	private ExpenseEntity findById(int user_id) {
 		// TODO 自動生成されたメソッド・スタブ
 		return null;
 	}
-
 }

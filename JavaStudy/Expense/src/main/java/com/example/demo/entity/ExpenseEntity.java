@@ -70,4 +70,10 @@ public class ExpenseEntity {
 	}
 
 
+	public void setUser_id(int user_id) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
+
 }
