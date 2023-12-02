@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 
 /**
- * 経費情報 リクエストデータ
+ * スコア情報 リクエストデータ
  */
 @Data
 public class ScoreRequest implements Serializable {

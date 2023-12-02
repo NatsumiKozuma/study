@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.ScoreEntity;
 /**
- * ユーザー情報 Repository(データベースにデータを新規登録するためのクラス)
+ * スコア情報 Repository(データベースにデータを新規登録するためのクラス)
  */
 @Repository
 public interface ScoreRepository extends JpaRepository<ScoreEntity, Integer> {

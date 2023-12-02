@@ -53,7 +53,7 @@ public class ScoreController {
 	 * データベースへの登録
 	 * @param userRequest リクエストデータ
 	 * @param model Model
-	 * @return 経費一覧画面
+	 * @return スコア一覧画面
 	 */
 	@RequestMapping(value = "/score/update", method = RequestMethod.POST)
 	public String update(@ModelAttribute @Validated  ScoreRequest scoreRequest, BindingResult result, Model model) {
@@ -80,7 +80,7 @@ public class ScoreController {
      */
     @GetMapping("/score/{id}/delete")
     public String delete(@PathVariable Integer id, Model model) {
-      // ユーザー情報の削除
+      // スコア情報の削除
       scoreService.delete(id);
       return "redirect:/score/list";
     }
