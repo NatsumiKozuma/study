@@ -4,23 +4,27 @@ import java.io.Serializable;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
+
 
 /**
  * スコア情報 リクエストデータ
  */
 @Data
 public class ScoreRequest implements Serializable {
+	
 
 	/**
 	 * 名前
 	 */
 	
+	
+	@NotEmpty(message = "名前を入力してください")
 	@Size(min=1, max=10,message ="10文字以内にしてください")
-	@NotNull(message = "名前を入力してください")
 	private String name;
 
 	/**
@@ -38,6 +42,7 @@ public class ScoreRequest implements Serializable {
 	@Min(value = 0, message = "点数は0以上である必要があります")
 	@Max(value = 100, message = "点数は100以下である必要があります")
 	private Integer english_score;
+
 
 
 }

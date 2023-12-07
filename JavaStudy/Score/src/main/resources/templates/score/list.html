@@ -28,6 +28,7 @@
 					<td th:text="*{math_score}"></td>
 					<td th:text="*{english_score}"></td>
 					<td>
+						<a th:href="@{/score/{id}(id=*{id})}" class="btn btn-secondary">詳細</a>
 						<a th:href="@{/score/{id}/delete(id=*{id})}" class="btn btn-secondary">削除</a>
 					</td>
 				</tr>

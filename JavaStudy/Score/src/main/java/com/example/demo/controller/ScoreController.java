@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.dto.ScoreRequest;
+import com.example.demo.dto.ScoreUpdateRequest;
 import com.example.demo.entity.ScoreEntity;
 import com.example.demo.service.ScoreService;
 
@@ -42,7 +43,7 @@ public class ScoreController {
 	 * @param model Model
 	 * @return スコア情報一覧画面
 	 */
-	@GetMapping("/score/add")
+	@GetMapping(value = "/score/add")
 	public String displayAdd(Model model) {
 		model.addAttribute("scoreRequest", new ScoreRequest());
 		return "score/add";
@@ -55,8 +56,8 @@ public class ScoreController {
 	 * @param model Model
 	 * @return スコア一覧画面
 	 */
-	@RequestMapping(value = "/score/update", method = RequestMethod.POST)
-	public String update(@ModelAttribute @Validated  ScoreRequest scoreRequest, BindingResult result, Model model) {
+	@RequestMapping(value = "/score/create", method = RequestMethod.POST)
+	public String create(@Validated @ModelAttribute  ScoreRequest scoreRequest, BindingResult result, Model model) {
 
 		if (result.hasErrors()) {
 			// 入力チェックエラーの場合
@@ -65,12 +66,66 @@ public class ScoreController {
 				errorList.add(error.getDefaultMessage());
 			}
 			model.addAttribute("validationError", errorList);
-			return "score/add";
+		    return "score/add";
 		}
 		// スコア情報の登録
-		scoreService.update(scoreRequest);
-		return "redirect:/score/list";
+		scoreService.create(scoreRequest);
+		return "redirect:/score/list"; 
 	}
+	
+	 /**
+	   * ユーザー情報詳細画面を表示
+	   * @param id 表示するユーザーID
+	   * @param model Model
+	   * @return ユーザー情報詳細画面
+	   */
+	  @GetMapping("/score/{id}")
+	  public String displayView(@PathVariable Integer id, Model model) {
+		  ScoreEntity score = scoreService.findById(id);
+		    model.addAttribute("scoreData", score);
+		    return "score/view";
+		   }
+	
+	
+	 /**
+	   * スコア編集画面を表示
+	   * @param id 表示するユーザーID
+	   * @param model Model
+	   * @return スコア編集画面
+	   */
+	  @GetMapping("/score/{id}/edit")
+	  public String displayEdit(@PathVariable Integer id, Model model) {
+		ScoreEntity score = scoreService.findById(id);
+	    ScoreUpdateRequest scoreUpdateRequest = new ScoreUpdateRequest();
+	    scoreUpdateRequest.setName(score.getName());
+	    scoreUpdateRequest.setMath_score(score.getMath_score());
+	    scoreUpdateRequest.setEnglish_score(score.getEnglish_score());
+	    model.addAttribute("scoreUpdateRequest", scoreUpdateRequest);
+	    return "score/edit";
+	  }
+
+	/**
+	   * スコア更新
+	   * @param userRequest リクエストデータ
+	   * @param model Model
+	   * @return スコア情報詳細画面
+	   */
+	  @RequestMapping(value = "/score/update", method = RequestMethod.POST)
+	  public String update(@Validated @ModelAttribute ScoreUpdateRequest scoreUpdateRequest, BindingResult result, Model model) {
+	   
+		  if (result.hasErrors()) {
+	      List<String> errorList = new ArrayList<String>();
+	     
+	      for (ObjectError error : result.getAllErrors()) {
+	        errorList.add(error.getDefaultMessage());
+	      }
+	      model.addAttribute("validationError", errorList);
+	      return "score/edit";
+	    }
+	    // スコア情報の更新
+	    scoreService.update(scoreUpdateRequest);
+	    return String.format("redirect:/score/%d", scoreUpdateRequest.getId());
+	  }
 
 	 /**
      * 経費情報削除
