@@ -27,6 +27,7 @@ public class ScoreRequest implements Serializable {
 	@Size(min=1, max=10,message ="10文字以内にしてください")
 	private String name;
 
+	
 	/**
 	 * 数学のスコア
 	 */

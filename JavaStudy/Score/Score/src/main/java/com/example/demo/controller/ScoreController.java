@@ -97,6 +97,7 @@ public class ScoreController {
 	  public String displayEdit(@PathVariable Integer id, Model model) {
 		ScoreEntity score = scoreService.findById(id);
 	    ScoreUpdateRequest scoreUpdateRequest = new ScoreUpdateRequest();
+	    scoreUpdateRequest.setId(score.getId());
 	    scoreUpdateRequest.setName(score.getName());
 	    scoreUpdateRequest.setMath_score(score.getMath_score());
 	    scoreUpdateRequest.setEnglish_score(score.getEnglish_score());

@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
 /**
  * スコア情報更新リクエストデータ
  *
@@ -13,6 +14,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper=false)
 public class ScoreUpdateRequest extends ScoreRequest implements Serializable {
+
   /**
    * ユーザーID
    */
